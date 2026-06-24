@@ -4,15 +4,18 @@ import type {
   BookingSource,
   CardiologyCondition,
   Case,
+  DeviceRecord,
   MedicationEntry,
   MotifCategory,
   PatientProfile,
   PatientType,
+  PaymentRecord,
   Priority,
   Report,
   RuleCard,
   SecondBrainMemory,
-  SmartInsight
+  SmartInsight,
+  TaskRecord
 } from "./types";
 import { buildReport } from "./reportTemplates";
 
@@ -408,6 +411,47 @@ export const mockAdminConfig: AdminConfigSection[] = [
     lastUpdated: "2026-05-23",
     settings: { doctorRawIntakeHidden: true, adminFullCockpit: true, secretaryCanApprove: true }
   }
+];
+
+export const mockPayments: PaymentRecord[] = [
+  { id: "PAY-001", patientSecureId: "PSID-1001", caseId: "SA-2026-0528-001", serviceType: "Holter", amountDue: 150, amountPaid: 0, paymentStatus: "Unpaid", dueDate: "2026-06-01", reminderDate: "2026-05-28", secretaryOwner: "Samira", followUpStatus: "Not contacted", notes: "Patient informed at appointment.", createdAt: "2026-05-20T09:00:00", updatedAt: "2026-05-20T09:00:00" },
+  { id: "PAY-002", patientSecureId: "PSID-1003", caseId: "SA-2026-0528-003", serviceType: "Consultation", amountDue: 80, amountPaid: 40, paymentStatus: "Partially paid", dueDate: "2026-06-05", reminderDate: "2026-06-03", secretaryOwner: "Nadia", followUpStatus: "Emailed", notes: "First instalment received.", createdAt: "2026-05-21T10:00:00", updatedAt: "2026-05-24T11:00:00" },
+  { id: "PAY-003", patientSecureId: "PSID-1005", serviceType: "Check-up", amountDue: 60, amountPaid: 60, paymentStatus: "Paid", dueDate: "2026-05-15", reminderDate: "2026-05-12", secretaryOwner: "Samira", followUpStatus: "Resolved", notes: "Paid on the day.", createdAt: "2026-05-15T08:30:00", updatedAt: "2026-05-15T08:30:00" },
+  { id: "PAY-004", patientSecureId: "PSID-1007", caseId: "SA-2026-0528-007", serviceType: "Holter", amountDue: 150, amountPaid: 0, paymentStatus: "Unpaid", dueDate: "2026-05-25", reminderDate: "2026-05-22", secretaryOwner: "Nadia", followUpStatus: "Called", notes: "Left voicemail, no response yet.", createdAt: "2026-05-18T14:00:00", updatedAt: "2026-05-23T09:00:00" },
+  { id: "PAY-005", patientSecureId: "PSID-1009", serviceType: "Consultation", amountDue: 80, amountPaid: 0, paymentStatus: "Unpaid", dueDate: "2026-06-10", reminderDate: "2026-06-07", secretaryOwner: "Samira", followUpStatus: "Not contacted", notes: "", createdAt: "2026-05-22T11:00:00", updatedAt: "2026-05-22T11:00:00" },
+  { id: "PAY-006", patientSecureId: "PSID-1011", caseId: "SA-2026-0528-011", serviceType: "Holter", amountDue: 150, amountPaid: 75, paymentStatus: "Partially paid", dueDate: "2026-06-12", reminderDate: "2026-06-09", secretaryOwner: "Nadia", followUpStatus: "Emailed", notes: "Balance outstanding.", createdAt: "2026-05-23T10:00:00", updatedAt: "2026-05-27T13:00:00" },
+  { id: "PAY-007", patientSecureId: "PSID-1013", serviceType: "Check-up", amountDue: 60, amountPaid: 60, paymentStatus: "Paid", dueDate: "2026-05-10", reminderDate: "2026-05-08", secretaryOwner: "Samira", followUpStatus: "Resolved", notes: "Paid by card.", createdAt: "2026-05-10T09:00:00", updatedAt: "2026-05-10T09:00:00" },
+  { id: "PAY-008", patientSecureId: "PSID-1015", caseId: "SA-2026-0528-015", serviceType: "Consultation", amountDue: 80, amountPaid: 0, paymentStatus: "Unpaid", dueDate: "2026-05-20", reminderDate: "2026-05-17", secretaryOwner: "Nadia", followUpStatus: "Called", notes: "Patient promised payment this week.", createdAt: "2026-05-16T08:00:00", updatedAt: "2026-05-23T15:00:00" },
+  { id: "PAY-009", patientSecureId: "PSID-1017", serviceType: "Other", amountDue: 40, amountPaid: 0, paymentStatus: "Unknown", dueDate: "2026-06-15", reminderDate: "2026-06-12", secretaryOwner: "Samira", followUpStatus: "Not contacted", notes: "Pending insurance clarification.", createdAt: "2026-05-24T12:00:00", updatedAt: "2026-05-24T12:00:00" },
+  { id: "PAY-010", patientSecureId: "PSID-1019", caseId: "SA-2026-0528-019", serviceType: "Holter", amountDue: 150, amountPaid: 150, paymentStatus: "Paid", dueDate: "2026-05-18", reminderDate: "2026-05-15", secretaryOwner: "Nadia", followUpStatus: "Resolved", notes: "Paid in full at collection.", createdAt: "2026-05-18T10:30:00", updatedAt: "2026-05-18T10:30:00" }
+];
+
+export const mockDevices: DeviceRecord[] = [
+  { id: "DEV-001", deviceType: "Holter", deviceRef: "HLT-001", patientSecureId: "PSID-1002", caseId: "SA-2026-0528-002", givenDate: "2026-05-10", expectedReturnDate: "2026-05-17", status: "Overdue", secretaryOwner: "Samira", reminderDate: "2026-05-16", followUpStatus: "Called", notes: "Patient unreachable after 2 attempts." },
+  { id: "DEV-002", deviceType: "Holter", deviceRef: "HLT-002", patientSecureId: "PSID-1004", caseId: "SA-2026-0528-004", givenDate: "2026-05-20", expectedReturnDate: "2026-05-27", status: "Returned", secretaryOwner: "Nadia", reminderDate: "2026-05-25", followUpStatus: "Resolved", notes: "Returned in good condition." },
+  { id: "DEV-003", deviceType: "Holter", deviceRef: "HLT-003", patientSecureId: "PSID-1006", caseId: "SA-2026-0528-006", givenDate: "2026-05-25", expectedReturnDate: "2026-06-01", status: "Due soon", secretaryOwner: "Samira", reminderDate: "2026-05-30", followUpStatus: "Not contacted", notes: "" },
+  { id: "DEV-004", deviceType: "Holter", deviceRef: "HLT-004", patientSecureId: "PSID-1008", caseId: "SA-2026-0528-008", givenDate: "2026-05-28", expectedReturnDate: "2026-06-04", status: "Issued", secretaryOwner: "Nadia", reminderDate: "2026-06-02", followUpStatus: "Not contacted", notes: "Instructions given at handover." },
+  { id: "DEV-005", deviceType: "Holter", deviceRef: "HLT-005", patientSecureId: "PSID-1010", givenDate: "2026-05-05", expectedReturnDate: "2026-05-12", actualReturnDate: "2026-05-12", status: "Returned", secretaryOwner: "Samira", reminderDate: "2026-05-10", followUpStatus: "Resolved", notes: "On time." },
+  { id: "DEV-006", deviceType: "Holter", deviceRef: "HLT-006", patientSecureId: "PSID-1012", caseId: "SA-2026-0528-012", givenDate: "2026-05-08", expectedReturnDate: "2026-05-15", status: "Overdue", secretaryOwner: "Nadia", reminderDate: "2026-05-14", followUpStatus: "Emailed", notes: "Email sent, no reply." },
+  { id: "DEV-007", deviceType: "ECG monitor", deviceRef: "ECG-001", patientSecureId: "PSID-1014", givenDate: "2026-05-29", expectedReturnDate: "2026-06-05", status: "Issued", secretaryOwner: "Samira", reminderDate: "2026-06-03", followUpStatus: "Not contacted", notes: "" },
+  { id: "DEV-008", deviceType: "Holter", deviceRef: "HLT-007", patientSecureId: "PSID-1016", caseId: "SA-2026-0528-016", givenDate: "2026-05-03", expectedReturnDate: "2026-05-10", status: "Lost", secretaryOwner: "Nadia", reminderDate: "2026-05-09", followUpStatus: "Called", notes: "Patient says device was misplaced. Escalated to admin." },
+  { id: "DEV-009", deviceType: "Holter", deviceRef: "HLT-008", patientSecureId: "PSID-1018", caseId: "SA-2026-0528-018", givenDate: "2026-05-27", expectedReturnDate: "2026-06-03", status: "Issued", secretaryOwner: "Samira", reminderDate: "2026-06-01", followUpStatus: "Not contacted", notes: "" },
+  { id: "DEV-010", deviceType: "Holter", deviceRef: "HLT-009", patientSecureId: "PSID-1020", givenDate: "2026-05-15", expectedReturnDate: "2026-05-22", actualReturnDate: "2026-05-23", status: "Returned", secretaryOwner: "Nadia", reminderDate: "2026-05-21", followUpStatus: "Resolved", notes: "Returned one day late, device in good condition." }
+];
+
+export const mockTasks: TaskRecord[] = [
+  { id: "TSK-001", title: "Follow up on unpaid Holter payment – PSID-1001", assignedTo: "Samira", assignedRole: "Secretary", dueDate: "2026-06-02", priority: "Normal", status: "To do", relatedPatientId: "PSID-1001", relatedCaseId: "SA-2026-0528-001", notificationChannel: "Email", createdAt: "2026-05-25T09:00:00", updatedAt: "2026-05-25T09:00:00" },
+  { id: "TSK-002", title: "Chase overdue Holter HLT-001 return – PSID-1002", assignedTo: "Samira", assignedRole: "Secretary", dueDate: "2026-05-28", priority: "Urgent", status: "In progress", relatedPatientId: "PSID-1002", notificationChannel: "Email", createdAt: "2026-05-18T10:00:00", updatedAt: "2026-05-23T11:00:00" },
+  { id: "TSK-003", title: "Verify identity – PSID-1007 appointment unclear", assignedTo: "Nadia", assignedRole: "Secretary", dueDate: "2026-05-30", priority: "Review", status: "Waiting", relatedPatientId: "PSID-1007", relatedCaseId: "SA-2026-0528-007", notificationChannel: "In-app", createdAt: "2026-05-20T14:00:00", updatedAt: "2026-05-22T09:00:00" },
+  { id: "TSK-004", title: "Request missing ECG for SA-2026-0528-005", assignedTo: "Samira", assignedRole: "Secretary", dueDate: "2026-05-29", priority: "Normal", status: "Done", relatedCaseId: "SA-2026-0528-005", notificationChannel: "Email", completionNote: "ECG received and uploaded to secure layer.", createdAt: "2026-05-19T08:00:00", updatedAt: "2026-05-26T14:00:00" },
+  { id: "TSK-005", title: "Review device report – HLT-006 overdue escalation", assignedTo: "Othmane", assignedRole: "Admin", dueDate: "2026-05-27", priority: "Urgent", status: "In progress", relatedPatientId: "PSID-1012", notificationChannel: "Notion", createdAt: "2026-05-22T16:00:00", updatedAt: "2026-05-24T10:00:00" },
+  { id: "TSK-006", title: "Confirm appointment date – PSID-1009", assignedTo: "Samira", assignedRole: "Secretary", dueDate: "2026-06-05", priority: "Normal", status: "To do", relatedPatientId: "PSID-1009", notificationChannel: "In-app", createdAt: "2026-05-26T09:30:00", updatedAt: "2026-05-26T09:30:00" },
+  { id: "TSK-007", title: "Validate medication list – SA-2026-0528-011", assignedTo: "Nadia", assignedRole: "Secretary", dueDate: "2026-05-31", priority: "Review", status: "To do", relatedCaseId: "SA-2026-0528-011", notificationChannel: "In-app", createdAt: "2026-05-25T11:00:00", updatedAt: "2026-05-25T11:00:00" },
+  { id: "TSK-008", title: "Follow up partial payment balance – PSID-1003", assignedTo: "Nadia", assignedRole: "Secretary", dueDate: "2026-06-04", priority: "Normal", status: "Waiting", relatedPatientId: "PSID-1003", notificationChannel: "Email", createdAt: "2026-05-24T13:00:00", updatedAt: "2026-05-27T08:00:00" },
+  { id: "TSK-009", title: "Check insurance status – PSID-1017 payment unknown", assignedTo: "Samira", assignedRole: "Secretary", dueDate: "2026-06-10", priority: "Normal", status: "Blocked", relatedPatientId: "PSID-1017", notificationChannel: "In-app", createdAt: "2026-05-24T14:00:00", updatedAt: "2026-05-24T14:00:00" },
+  { id: "TSK-010", title: "Review HLT-006 loss report and assess replacement", assignedTo: "Dr. Amraoui", assignedRole: "Doctor", dueDate: "2026-05-30", priority: "Urgent", status: "To do", relatedPatientId: "PSID-1016", notificationChannel: "Notion", createdAt: "2026-05-23T15:00:00", updatedAt: "2026-05-23T15:00:00" },
+  { id: "TSK-011", title: "Send missing blood pressure log request – PSID-1011", assignedTo: "Nadia", assignedRole: "Secretary", dueDate: "2026-06-01", priority: "Normal", status: "Done", relatedPatientId: "PSID-1011", notificationChannel: "Email", completionNote: "Request sent via secure messaging.", createdAt: "2026-05-21T10:00:00", updatedAt: "2026-05-27T16:00:00" },
+  { id: "TSK-012", title: "Prepare secretary validation for SA-2026-0528-019", assignedTo: "Samira", assignedRole: "Secretary", dueDate: "2026-06-02", priority: "Normal", status: "In progress", relatedCaseId: "SA-2026-0528-019", notificationChannel: "In-app", createdAt: "2026-05-26T08:00:00", updatedAt: "2026-05-27T10:00:00" }
 ];
 
 export const mockAdminRules: RuleCard[] = [

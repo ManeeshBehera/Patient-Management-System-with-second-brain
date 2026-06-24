@@ -1,6 +1,6 @@
 "use client";
 
-import { Activity, AlertTriangle, Bell, CheckCircle, ClipboardList, Clock, Database, FileText, Stethoscope, UserCheck, Users } from "lucide-react";
+import { Activity, AlertTriangle, Bell, CheckCircle, ClipboardList, Clock, CreditCard, Database, FileText, ListTodo, Stethoscope, UserCheck, Users, Wifi } from "lucide-react";
 import type { DemoData } from "@/lib/appState";
 import { Card, ComplianceStrip, DonutChart, MiniBarChart, SectionTitle } from "@/components/shared";
 
@@ -22,6 +22,10 @@ export function OverviewDashboard({ data }: { data: DemoData }) {
   const insightCounts = Object.entries(countBy(data.insights.map((item) => item.type))).map(([label, value]) => ({ label, value }));
   const ready = data.cases.filter((item) => item.doctorStatus === "Pending").length;
   const secretaryBacklog = data.cases.filter((item) => ["New Intake", "Matching", "Review", "Missing Info", "Drafting"].includes(item.intakeStatus)).length;
+  const unpaidPayments = (data.payments ?? []).filter((p) => p.paymentStatus !== "Paid").length;
+  const issuedDevices = (data.devices ?? []).filter((d) => ["Issued", "Due soon", "Overdue"].includes(d.status)).length;
+  const openTasks = (data.tasks ?? []).filter((t) => t.status !== "Done").length;
+
   const metrics = [
     { label: "Total patients", value: data.patients.length, icon: Users },
     { label: "Active patients", value: activePatients, icon: Activity },
@@ -31,10 +35,13 @@ export function OverviewDashboard({ data }: { data: DemoData }) {
     { label: "Cases missing documents", value: data.cases.filter((item) => item.missingInfo.length > 0).length, icon: Database },
     { label: "Cases ready for doctor", value: ready, icon: CheckCircle },
     { label: "Avg booking-to-ready", value: "3h 20m", icon: Clock },
-    { label: "AI drafts generated", value: data.reports.length, icon: FileText },
-    { label: "Quiet insights available", value: data.insights.filter((item) => item.visibility === "Quiet").length, icon: Bell },
     { label: "Secretary backlog", value: secretaryBacklog, icon: ClipboardList },
-    { label: "Doctor pending load", value: ready, icon: Stethoscope }
+    { label: "Doctor pending load", value: ready, icon: Stethoscope },
+    { label: "Unpaid / partial payments", value: unpaidPayments, icon: CreditCard },
+    { label: "Devices out / due / overdue", value: issuedDevices, icon: Wifi },
+    { label: "Open tasks", value: openTasks, icon: ListTodo },
+    { label: "AI drafts generated", value: data.reports.length, icon: FileText },
+    { label: "Quiet insights available", value: data.insights.filter((item) => item.visibility === "Quiet").length, icon: Bell }
   ];
 
   return (

@@ -6,12 +6,16 @@ import {
   Brain,
   Calendar,
   ClipboardList,
+  CreditCard,
   Database,
   FileText,
   LayoutDashboard,
+  ListTodo,
   Settings,
   Stethoscope,
-  UserCheck
+  UserCheck,
+  Users,
+  Wifi
 } from "lucide-react";
 import type { UserRole, ViewKey } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -23,6 +27,10 @@ const navItems: Array<{ key: ViewKey; label: string; icon: React.ElementType; ro
   { key: "secretary", label: "Secretary Review", icon: UserCheck, roles: ["Admin", "Secretary"] },
   { key: "doctor-pending", label: "Doctor Pending", icon: Stethoscope, roles: ["Admin", "Doctor"] },
   { key: "doctor-working", label: "Doctor Working", icon: Activity, roles: ["Admin", "Doctor"] },
+  { key: "patients", label: "Patients", icon: Users, roles: ["Admin", "Secretary", "Doctor"] },
+  { key: "tasks", label: "Tasks", icon: ListTodo, roles: ["Admin", "Secretary", "Doctor"] },
+  { key: "payments", label: "Payments", icon: CreditCard, roles: ["Admin", "Secretary"] },
+  { key: "devices", label: "Devices / Holters", icon: Wifi, roles: ["Admin", "Secretary"] },
   { key: "reports", label: "Reports", icon: FileText, roles: ["Admin", "Secretary", "Doctor"] },
   { key: "second-brain", label: "Second Brain", icon: Brain, roles: ["Admin", "Doctor"] },
   { key: "insights", label: "Smart Insights", icon: Bell, roles: ["Admin", "Doctor"] },
