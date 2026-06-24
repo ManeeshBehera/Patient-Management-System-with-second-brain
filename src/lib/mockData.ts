@@ -4,13 +4,16 @@ export {
   generateMockInsights,
   generateMockPatients,
   generateMockReports,
-  mockAutomationLogs,
   mockAdminConfig,
   mockAdminRules,
+  mockAutomationLogs,
   mockCases,
+  mockDevices,
   mockInsights,
   mockMemories,
   mockMemories as mockSecondBrainMemory,
   mockPatients,
-  mockReports
+  mockPayments,
+  mockReports,
+  mockTasks
 } from "./mockPatients";

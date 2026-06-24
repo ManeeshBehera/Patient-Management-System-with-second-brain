@@ -3,12 +3,15 @@ import type {
   AdminConfigSection,
   BookingInput,
   Case,
+  DeviceRecord,
   InsightAction,
   PatientProfile,
+  PaymentRecord,
   Report,
   RuleCard,
   SecondBrainMemory,
-  SmartInsight
+  SmartInsight,
+  TaskRecord
 } from "./types";
 
 export interface DemoData {
@@ -20,6 +23,9 @@ export interface DemoData {
   memories: SecondBrainMemory[];
   adminConfig: AdminConfigSection[];
   adminRules: RuleCard[];
+  payments: PaymentRecord[];
+  devices: DeviceRecord[];
+  tasks: TaskRecord[];
 }
 
 export interface DemoActions {

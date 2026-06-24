@@ -181,6 +181,63 @@ export interface RuleCard {
   lastUpdated: string;
 }
 
+export type PaymentStatus = "Paid" | "Unpaid" | "Partially paid" | "Unknown";
+export type PaymentFollowUpStatus = "Not contacted" | "Emailed" | "Called" | "Resolved";
+export type DeviceType = "Holter" | "ECG monitor" | "Other";
+export type DeviceStatus = "Available" | "Issued" | "Due soon" | "Overdue" | "Returned" | "Lost" | "Damaged";
+export type TaskStatus = "To do" | "In progress" | "Waiting" | "Blocked" | "Done";
+export type ServiceType = "Consultation" | "Check-up" | "Holter" | "Other";
+export type NotificationChannel = "Email" | "Notion" | "In-app";
+
+export interface PaymentRecord {
+  id: string;
+  patientSecureId: string;
+  caseId?: string;
+  serviceType: ServiceType;
+  amountDue: number;
+  amountPaid: number;
+  paymentStatus: PaymentStatus;
+  dueDate: string;
+  reminderDate: string;
+  secretaryOwner: string;
+  followUpStatus: PaymentFollowUpStatus;
+  notes: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface DeviceRecord {
+  id: string;
+  deviceType: DeviceType;
+  deviceRef: string;
+  patientSecureId: string;
+  caseId?: string;
+  givenDate: string;
+  expectedReturnDate: string;
+  actualReturnDate?: string;
+  status: DeviceStatus;
+  secretaryOwner: string;
+  reminderDate: string;
+  followUpStatus: PaymentFollowUpStatus;
+  notes: string;
+}
+
+export interface TaskRecord {
+  id: string;
+  title: string;
+  assignedTo: string;
+  assignedRole: UserRole;
+  dueDate: string;
+  priority: Priority;
+  status: TaskStatus;
+  relatedPatientId?: string;
+  relatedCaseId?: string;
+  notificationChannel: NotificationChannel;
+  completionNote?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 export type ViewKey =
   | "overview"
   | "booking"
@@ -188,6 +245,10 @@ export type ViewKey =
   | "secretary"
   | "doctor-pending"
   | "doctor-working"
+  | "patients"
+  | "tasks"
+  | "payments"
+  | "devices"
   | "reports"
   | "second-brain"
   | "insights"

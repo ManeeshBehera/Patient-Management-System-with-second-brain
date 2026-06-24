@@ -6,16 +6,20 @@ import { SecondBrain } from "@/components/brain/SecondBrain";
 import { SmartInsights } from "@/components/brain/SmartInsights";
 import { CaseDetailDrawer } from "@/components/cases/CaseDetailDrawer";
 import { PatientIntakeCalendar } from "@/components/cases/PatientIntakeCalendar";
+import { DevicesTracker } from "@/components/devices/DevicesTracker";
 import { DoctorPending } from "@/components/doctor/DoctorPending";
 import { DoctorWorking } from "@/components/doctor/DoctorWorking";
 import { BookingIntakeForm } from "@/components/intake/BookingIntakeForm";
 import { AppShell } from "@/components/layout/AppShell";
 import { AutomationLog } from "@/components/logs/AutomationLog";
 import { OverviewDashboard } from "@/components/overview/OverviewDashboard";
+import { PatientsRegistry } from "@/components/patients/PatientsRegistry";
+import { PaymentsTracker } from "@/components/payments/PaymentsTracker";
 import { ReportsView } from "@/components/reports/ReportsView";
 import { SecretaryReviewBoard } from "@/components/secretary/SecretaryReviewBoard";
+import { TasksBoard } from "@/components/tasks/TasksBoard";
 import type { DemoActions, DemoData } from "@/lib/appState";
-import { generateMockAutomationLogs, generateMockCases, generateMockInsights, generateMockPatients, generateMockReports, mockAdminConfig, mockAdminRules, mockAutomationLogs, mockCases, mockInsights, mockMemories, mockPatients, mockReports } from "@/lib/mockPatients";
+import { generateMockAutomationLogs, generateMockCases, generateMockInsights, generateMockPatients, generateMockReports, mockAdminConfig, mockAdminRules, mockAutomationLogs, mockCases, mockDevices, mockInsights, mockMemories, mockPatients, mockPayments, mockReports, mockTasks } from "@/lib/mockPatients";
 import type { AdminConfigSection, Case, InsightAction, RuleCard, UserRole, ViewKey } from "@/lib/types";
 import {
   addAutomationLog,
@@ -42,7 +46,10 @@ function initialData(): DemoData {
     logs: mockAutomationLogs,
     memories: mockMemories,
     adminConfig: mockAdminConfig,
-    adminRules: mockAdminRules
+    adminRules: mockAdminRules,
+    payments: mockPayments,
+    devices: mockDevices,
+    tasks: mockTasks
   };
 }
 
@@ -56,7 +63,10 @@ function normalizeData(saved: Partial<DemoData>): DemoData {
     logs: saved.logs?.length ? saved.logs : fresh.logs,
     memories: saved.memories?.length ? saved.memories : fresh.memories,
     adminConfig: saved.adminConfig?.length ? saved.adminConfig : fresh.adminConfig,
-    adminRules: saved.adminRules?.length ? saved.adminRules : fresh.adminRules
+    adminRules: saved.adminRules?.length ? saved.adminRules : fresh.adminRules,
+    payments: saved.payments?.length ? saved.payments : fresh.payments,
+    devices: saved.devices?.length ? saved.devices : fresh.devices,
+    tasks: saved.tasks?.length ? saved.tasks : fresh.tasks
   };
 }
 
@@ -280,7 +290,10 @@ export default function Page() {
           logs: [addAutomationLog("ADMIN", "Admin generated synthetic month", "Demo Data Controls", "Demo simulated", role, "Generate new synthetic month"), ...generateMockAutomationLogs(cases)],
           memories: mockMemories,
           adminConfig: data.adminConfig,
-          adminRules: data.adminRules
+          adminRules: data.adminRules,
+          payments: mockPayments,
+          devices: mockDevices,
+          tasks: mockTasks
         });
         return next;
       });
@@ -401,6 +414,10 @@ export default function Page() {
       {activeView === "secretary" && <SecretaryReviewBoard data={data} actions={actions} />}
       {activeView === "doctor-pending" && <DoctorPending data={data} actions={actions} />}
       {activeView === "doctor-working" && <DoctorWorking data={data} actions={actions} />}
+      {activeView === "patients" && <PatientsRegistry data={data} />}
+      {activeView === "tasks" && <TasksBoard data={data} />}
+      {activeView === "payments" && <PaymentsTracker data={data} />}
+      {activeView === "devices" && <DevicesTracker data={data} />}
       {activeView === "reports" && <ReportsView data={data} actions={actions} />}
       {activeView === "second-brain" && <SecondBrain data={data} actions={actions} />}
       {activeView === "insights" && <SmartInsights data={data} actions={actions} />}
