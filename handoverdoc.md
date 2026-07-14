@@ -13,7 +13,7 @@ Patient-facing cardiology **website** content in Notion (Paris 17e), built page-
 
 | # | Website page | Notion page | Status | Notes |
 |---|---|---|---|---|
-| 1 | Home | **homepage** | ✅ Done | SEO homepage built (EN, Paris 17e). Keywords: cardiologist Paris 17e. Sections: Hero, Why consult, Reasons to consult (services), About, What to expect, Practical info, FAQ, Final CTA. Facts as {placeholders}. |
+| 1 | Home | **homepage** | ✅ Done | SEO homepage (EN). Brand + generic head-term hub — Primary: Dr Sana Amraoui / cardiologist. Local & service long-tails belong on service/location pages, not here. Sections: Hero, Why consult, Reasons to consult (services), About, What to expect, Practical info, FAQ, Final CTA. Facts as {placeholders}. |
 | 2 | Booking Intake | Booking Intake | ⬜ Pending | |
 | 3 | Patient Intake Calendar | Patient Intake Calendar | ⬜ Pending | |
 | 4 | Secretary Review | Secretary Review | ⬜ Pending | |
