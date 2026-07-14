@@ -5,6 +5,7 @@ Patient-facing cardiology **website** content in Notion (Paris 17e), built page-
 - **Website ≠ app.** The render link is the website; the intake OS app is a separate project — out of scope this session.
 - **Notion parent:** [EN]Cardio checkup website content → under `Livrables & Ressources`
 - **Git branch:** `cardio-checkup`
+- **Brand:** Cardio Check-up (a cabinet of 5–6 cardiologists — NOT a single-doctor practice)
 - **Audience:** patients | **Market:** Paris 17e | **Language:** English first (French later)
 - **Page format:** 1) Target Keyword (primary/secondary/long-tail) 2) Page ideology & goal 3) Sections & content
 - **Rule:** no invented facts — unknown facts left as `{placeholders}`.
@@ -13,7 +14,7 @@ Patient-facing cardiology **website** content in Notion (Paris 17e), built page-
 
 | # | Website page | Notion page | Status | Notes |
 |---|---|---|---|---|
-| 1 | Home | **homepage** | ✅ Done | SEO homepage (EN). Brand + generic head-term hub — Primary: Dr Sana Amraoui / cardiologist. Local & service long-tails belong on service/location pages, not here. Sections: Hero, Why consult, Reasons to consult (services), About, What to expect, Practical info, FAQ, Final CTA. Facts as {placeholders}. |
+| 1 | Home | **homepage** | ✅ Done | SEO homepage (EN). Brand + generic head-term hub — Primary: Cardio Check-up / cardiologist (multi-doctor cabinet). Local & service long-tails belong on service/location pages, not here. Sections: Hero, Why consult, Reasons to consult (services), About, What to expect, Practical info, FAQ, Final CTA. Facts as {placeholders}. |
 | 2 | Booking Intake | Booking Intake | ⬜ Pending | |
 | 3 | Patient Intake Calendar | Patient Intake Calendar | ⬜ Pending | |
 | 4 | Secretary Review | Secretary Review | ⬜ Pending | |
