@@ -1,16 +1,19 @@
 # Handover Doc — Cardio Checkup Website Content (Notion)
 
-Mirror of the live site `cardio-check-up.onrender.com` into Notion, then edit page-by-page.
+Patient-facing cardiology **website** content in Notion (Paris 17e), built page-by-page for SEO.
 
+- **Website ≠ app.** The render link is the website; the intake OS app is a separate project — out of scope this session.
 - **Notion parent:** [EN]Cardio checkup website content → under `Livrables & Ressources`
 - **Git branch:** `cardio-checkup`
-- **Rule:** faithful to source, no invented content.
+- **Audience:** patients | **Market:** Paris 17e | **Language:** English first (French later)
+- **Page format:** 1) Target Keyword (primary/secondary/long-tail) 2) Page ideology & goal 3) Sections & content
+- **Rule:** no invented facts — unknown facts left as `{placeholders}`.
 
 ## Page-by-page status
 
 | # | Website page | Notion page | Status | Notes |
 |---|---|---|---|---|
-| 1 | Overview | **homepage** | ✅ Done | Renamed Overview → homepage. Sections: Compliance strip, Hero, Key metrics, Booking source breakdown, Case distribution by status, Motif categories, Insights by type, Demo principle. |
+| 1 | Home | **homepage** | ✅ Done | SEO homepage built (EN, Paris 17e). Keywords: cardiologist Paris 17e. Sections: Hero, Why consult, Reasons to consult (services), About, What to expect, Practical info, FAQ, Final CTA. Facts as {placeholders}. |
 | 2 | Booking Intake | Booking Intake | ⬜ Pending | |
 | 3 | Patient Intake Calendar | Patient Intake Calendar | ⬜ Pending | |
 | 4 | Secretary Review | Secretary Review | ⬜ Pending | |
@@ -27,4 +30,5 @@ Mirror of the live site `cardio-check-up.onrender.com` into Notion, then edit pa
 | 15 | Admin Rules | Admin Rules | ⬜ Pending | |
 
 ## Log
-- 2026-07-14: Created Notion mirror (parent + 15 child pages), removed duplicate index list, removed all page icons. Renamed Overview → homepage.
+- 2026-07-14: Created Notion structure (parent + 15 child pages), removed duplicate index list, removed all page icons. Renamed Overview → homepage.
+- 2026-07-14: Clarified website ≠ app. Built patient-facing SEO homepage (EN, Paris 17e) in the 3-block format.
